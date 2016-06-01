@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ConnectionTest</string>
+    <string name="hostname">hostname</string>
+    <string name="extremity">extremity</string>
+    <string name="content">content</string>
+    <string name="listener">listerExtremity</string>
+</resources>
