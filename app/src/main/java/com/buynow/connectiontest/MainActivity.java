@@ -67,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
         et_content = (EditText) findViewById(R.id.et_content);
         et_listener = (EditText)findViewById(R.id.et_listenerExtremity);
         tv_acceptContent = (TextView) findViewById(R.id.tv_acceptContent);
-        tv_acceptContent.setText("aaaaaaaaaaaaaa"+"\nfsadfds");
 
 
         mPreferences = getSharedPreferences(XML_FILE_NAME,0);
@@ -83,11 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("TAGMY", getPsdnIp());
 
-        Message msg = Message.obtain();
-        msg.obj = "bbbbbdsfad";
-        msg.what = DISPLAY_DATA;
 
-        handle.sendMessage(msg);
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -119,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-//        accept();
+        accept();
 
     }
 
@@ -168,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
     private void accept() {
         String ip = et_hostname.getText().toString();
         String ex = et_extremity.getText().toString();
-        new AcceptDataThread(ip, 1234).start();
+        new AcceptDataThread(ip, 8080,handle).start();
     }
 
     @Override

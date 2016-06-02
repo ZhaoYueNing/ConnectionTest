@@ -24,16 +24,16 @@ public class AcceptDataThread extends Thread {
 
     private final String mIp;
     private final int mExtremity;
+    private final Handler mHandler;
 
-    public AcceptDataThread(String ip, int extremity) {
+    public AcceptDataThread(String ip, int extremity,Handler uiHandle) {
         super("AcceptDataThread");
         mIp = ip;
         mExtremity = extremity;
+        mHandler = uiHandle;
     }
     @Override
     public void run() {
-        Handler handler = new Handler(Looper.getMainLooper());
-
         String ip = mIp;
         int extremity = mExtremity;
         try {
@@ -57,7 +57,7 @@ public class AcceptDataThread extends Thread {
                 Message msg = Message.obtain();
                 msg.what = MainActivity.DISPLAY_DATA;
                 msg.obj = content;
-                handler.sendMessage(msg);
+                mHandler.sendMessage(msg);
             }
         } catch (IOException e) {
             e.printStackTrace();
